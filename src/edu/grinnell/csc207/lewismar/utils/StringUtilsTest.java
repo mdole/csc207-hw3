@@ -30,6 +30,16 @@ public class StringUtilsTest {
 	assertArrayEquals("not colon", new String[] { "a", "b" },
 		StringUtils.splitAt("a.b", '.'));   
     }
+    
+    @Test
+    public void testSplitCSV() {
+    assertArrayEquals("test one", new String[] { "a", "b", "c" },
+	    StringUtils.splitCSV("a,b,c"));
+    assertArrayEquals("test two", new String[] { "a,b", "c" },
+	    StringUtils.splitCSV("\"a,b\",c"));
+    assertArrayEquals("test three", new String[] { "a", "b,b\"", "c" },
+	    StringUtils.splitCSV("a,\"b,b\"\"\",c"));
+    }
 
     @Test
     public void testDeLeet () {

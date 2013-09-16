@@ -36,4 +36,21 @@ public class Calculator {
 	} // for
 	return total;
     }
+    /*
+     * fewest coins takes an integer and returns an array containing the least amount of coins
+     * needed to produce that integer
+     * The array returned has 4 elements, and is of the following form:
+     * {#2s used, #7s used, #11s used, #54s used}
+     * if i cannot be achieved using 2s, 7s, 11s, and 54s the array returned will
+     * contain 4 zeros
+     */
+    public static int[] fewestCoins(int i) {
+	int[] coinArray = new int[4]; //Java default initializes to zero
+	//Special cases: coins cannot sum to i
+	if (i == 1 || i == 3 || i == 5) {
+	   return coinArray; 
+	}
+	
+	return coinArray;
+    }
 }

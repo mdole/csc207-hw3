@@ -38,6 +38,7 @@ public class StringUtils {
 	} // for
 	return split;
     } // splitAt
+    
     public static String[] splitCSV(String str) {
 	// Count how many times comma's appear outside of quotation marks
 	Boolean insideQuote = false;
@@ -47,9 +48,7 @@ public class StringUtils {
 		// Advance if next character is a double quote
 		if(i != str.length() -1 && str.charAt(i+1) == '"') {
 		    i++;
-		} // if
-		// switch inside quote
-		if(!insideQuote) {
+		} else if(!insideQuote) {
 		    insideQuote = true;
 		} else {
 		    insideQuote = false;
@@ -77,9 +76,10 @@ public class StringUtils {
 	for(int i = 0; i < str.length(); i++) {
 	  // handle quotes
 	    if(str.charAt(i) == '"') {
-		currentString += '"';
+		// special case: i = 0
 		if(i != str.length() -1 && str.charAt(i+1) == '"') {
-		    i++;
+		    i += 2;
+		    currentString += '"';
 		} // if
 		// switch inside quote
 		if(!insideQuote) {
@@ -101,7 +101,8 @@ public class StringUtils {
 		currentString += str.charAt(i); 
 	    } //else
 	} // for
-	
+	//add what remains
+	split[currentPos] = currentString;
 	return split;
     } // splitCSV
     // Citations: We consulted http://docs.oracle.com/javase/tutorial/java/data/characters.html for use of the character \
@@ -155,4 +156,5 @@ public class StringUtils {
 	verse += "Fee fy mo M" + withoutCons + ", " + name + '!';
 	return verse;
     } // nameGame
+
 }
