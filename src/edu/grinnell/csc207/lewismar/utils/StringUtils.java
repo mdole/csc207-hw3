@@ -48,9 +48,11 @@ public class StringUtils {
 		// Advance if next character is a double quote
 		if(i != str.length() -1 && str.charAt(i+1) == '"') {
 		    i++;
-		} else if(!insideQuote) {
+		} //if
+		else if(!insideQuote) {
 		    insideQuote = true;
-		} else {
+		} //else if
+		else {
 		    insideQuote = false;
 		} // else
 	    } else if(!insideQuote && str.charAt(i) == ',') {

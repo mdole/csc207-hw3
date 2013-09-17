@@ -41,8 +41,9 @@ public class StringUtilsTest {
 		StringUtils.splitCSV("a,\"b,b\"\"\",c"));
 	assertArrayEquals("using a \\", new String[] { "a", "\\b", "c" },
 		StringUtils.splitCSV("a,\\b,c"));
-	assertArrayEquals("No double quotes", new String[] { "a", "b\"", "c"},
-		StringUtils.splitCSV("a,b,c"));
+	assertArrayEquals("quote in element one", new String[] { "a", "b\"", "c"},
+		StringUtils.splitCSV("a,\"b\"\"\",c"));
+
     }
 
     @Test
