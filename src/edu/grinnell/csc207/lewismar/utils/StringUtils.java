@@ -76,7 +76,6 @@ public class StringUtils {
 	for(int i = 0; i < str.length(); i++) {
 	  // handle quotes
 	    if(str.charAt(i) == '"') {
-		// special case: i = 0
 		if(i != str.length() -1 && str.charAt(i+1) == '"') {
 		    i += 2;
 		    currentString += '"';
