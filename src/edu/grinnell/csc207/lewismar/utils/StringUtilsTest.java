@@ -13,40 +13,43 @@ public class StringUtilsTest {
 
     @Test
     public void testSplitAt() {
-	assertArrayEquals("Test one",new String[] { "a", "b", "c" },
-		StringUtils.splitAt("a:b:c", ':'));
-	assertArrayEquals("test two", new String[] { "a", "b", "c" },
-		StringUtils.splitAt("a b c", ' '));
-	assertArrayEquals("test three", new String[] { "a:b:c" },
-		StringUtils.splitAt("a:b:c", ' '));
-	assertArrayEquals("one field", new String[] { "a" },
-		StringUtils.splitAt("a", ':'));
-	assertArrayEquals("leading empty field", new String[] { "", "a" },
-		StringUtils.splitAt(":a", ':'));
-	assertArrayEquals("all empty fields", new String[] { "", "", "" },
-		StringUtils.splitAt(":::", ':'));
-	assertArrayEquals("trailing empty field", new String[] { "a", "" },
-		StringUtils.splitAt("a:", ':'));   
-	assertArrayEquals("not colon", new String[] { "a", "b" },
-		StringUtils.splitAt("a.b", '.'));   
+    assertArrayEquals("Colon separator",new String[] { "a", "b", "c" },
+        StringUtils.splitAt("a:b:c", ':'));
+    assertArrayEquals("Space separator", new String[] { "a", "b", "c" },
+        StringUtils.splitAt("a b c", ' '));
+    assertArrayEquals("Period separator", new String[] { "a", "b" },
+        StringUtils.splitAt("a.b", '.'));  
+    assertArrayEquals("Separator is not in string", new String[] { "a:b:c" },
+        StringUtils.splitAt("a:b:c", ' '));
+    assertArrayEquals("One field", new String[] { "a" },
+        StringUtils.splitAt("a", ':'));
+    assertArrayEquals("Leading empty field", new String[] { "", "a" },
+        StringUtils.splitAt(":a", ':'));
+    assertArrayEquals("All empty fields", new String[] { "", "", "" },
+        StringUtils.splitAt(":::", ':'));
+    assertArrayEquals("Trailing empty field", new String[] { "a", "" },
+        StringUtils.splitAt("a:", ':'));    
     }
     
     @Test
     public void testSplitCSV() {
     assertArrayEquals("test one", new String[] { "a", "b", "c" },
-	    StringUtils.splitCSV("a,b,c"));
+        StringUtils.splitCSV("a,b,c"));
     assertArrayEquals("test two", new String[] { "a,b", "c" },
-	    StringUtils.splitCSV("\"a,b\",c"));
+        StringUtils.splitCSV("\"a,b\",c"));
     assertArrayEquals("test three", new String[] { "a", "b,b\"", "c" },
-	    StringUtils.splitCSV("a,\"b,b\"\"\",c"));
+        StringUtils.splitCSV("a,\"b,b\"\"\",c"));
     }
 
     @Test
     public void testDeLeet () {
-	assertEquals("e", StringUtils.deLeet("3"));
-	assertEquals("leet", StringUtils.deLeet("133+"));
-	assertEquals("eat banana", StringUtils.deLeet("3@+ |3@|\\|@|\\|@"));
+    assertEquals("e", StringUtils.deLeet("3"));
+    assertEquals("leet", StringUtils.deLeet("133+"));
+    assertEquals("eat banana", StringUtils.deLeet("3@+ |3@|\\|@|\\|@"));
+    assertEquals("nananana bat", StringUtils.deLeet("|\\|@|\\|@|\\|@|\\|@ |3@+"));
+    assertEquals("loot", StringUtils.deLeet("100+"));
     }
+
 
     @Test
     public void testNameGame() {
